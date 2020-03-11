@@ -32,13 +32,14 @@ app.post("/api/departments", (req,res,next)=>{
     })
 app.put('/api/users/:id',async(req,res,next)=>{
     const user = req.body
+    console.log(user)
     User.update(
         {
             name: user.name,
             departmentId: user.departmentId
         },
         {returning: true, where: {id: user.id} }
-    ).then(result=>res.status(201).send(result))
+    ).then(result=>res.status(201).send(user))
     
     })
 app.put("/api/departments/:id", (req,res,next)=>{
@@ -46,7 +47,7 @@ app.put("/api/departments/:id", (req,res,next)=>{
     Department.update(
         {name: department.name},
         {returning: true, where: {id: department.id} }
-    ).then(result=>res.status(201).send(result))
+    ).then(result=>res.status(201).send(department))
     })
 app.delete('/api/users/:id',async(req,res,next)=>{
     const id = req.params.id
