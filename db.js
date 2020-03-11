@@ -48,36 +48,6 @@ const sync = async () => {
   ]);
 };
 
-const createUser=(user)=>{
-    User.create(user)
-}
-const createDepartment=(department)=>{
-    Department.create(department)
-}
-const updateUser=(user)=>{
-    User.update(
-        {name: user.name,
-        departmentId: user.departmentId
-        },
-        {returning: true, where: {id: user.id} }
-    )
-}
-const updateDepartment=(department)=>{
-    Department.update(
-        {name: department.name},
-        {returning: true, where: {id: department.id} }
-    )
-}
-const deleteUser=(id)=>{
-    User.destroy(
-       { where:{id:id}}
-    )
-}
-const deleteDepartment=(id)=>{
-    Department.destroy(
-        { where:{id:id}}
-     )
-}
 
 module.exports = {
   sync,

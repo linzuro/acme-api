@@ -21,11 +21,14 @@ app.get("/api/departments", (req,res,next)=>{
 })
 app.post('/api/users',async(req,res,next)=>{
     const user = req.body
-    User.create(user).then(result=>res.send(result))
+    User.create(
+        {name:user.name},
+        {returning:true}).then(result=>res.send(result))
     })
 app.post("/api/departments", (req,res,next)=>{
     const department = req.body
-    Department.create(department).then(result=>res.send(result))
+    Department.create({name:department.name},
+        {returning:true}).then(result=>res.send(result))
     })
 app.put('/api/users/:id',async(req,res,next)=>{
     const user = req.body
