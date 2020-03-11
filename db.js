@@ -54,11 +54,5 @@ module.exports = {
   models: {
     User,
     Department
-  },
-  createUser,
-  createDepartment,
-  updateUser,
-  updateDepartment,
-  deleteUser,
-  deleteDepartment
+  }
 };
